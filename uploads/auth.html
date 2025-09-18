@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Authentication Redirect</title>
+    <script>
+        // Parse the token from the URL and redirect back to the app
+        function getTokenFromUrl() {
+            const urlParams = new URLSearchParams(window.location.hash.substring(1));
+            return urlParams.get('access_token') || urlParams.get('id_token');
+        }
+
+        const token = getTokenFromUrl();
+        if (token) {
+            // Redirect back to the app with the token
+            window.location.href = `cedeso-app://auth?token=${encodeURIComponent(token)}`;
+        }
+    </script>
+</head>
+<body>
+    <p>Completing authentication...</p>
+</body>
+</html>
